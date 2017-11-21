@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity
 {
     private Button page2Button;
@@ -21,10 +23,16 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
 
-        this.ar = new int[1000];
+        this.ar = new int[100];
+        Random r = new Random();
         for(int i = 0; i < this.ar.length; i++)
         {
-            this.ar[i] = i+1;
+            this.ar[i] = r.nextInt();
+            if(ar[i] < 0)
+            {
+                ar[i] = ar[i] * -1;
+            }
+            ar[i] = ar[i] % 100;
         }
 
         this.printArray();
